@@ -38,7 +38,6 @@ function Container:init(config)
     self.card_dict_name_list = {}
     self.container = config.container
     self.confirm_button = config.confirm_button
-    print(123)
     self:init_nodes()
     self:register_handler(config)
     for _, role in ipairs(GameAPI.get_all_valid_roles()) do
@@ -121,6 +120,7 @@ function Container:register_handler(config)
         local card_name = role.get_kv_by_type("Str", "ChooseOption:card_name")
         local ui_card = self.card_dict[card_name]
         ui_card.reward(role)
+        self:hide(role)
     end)
 end
 
